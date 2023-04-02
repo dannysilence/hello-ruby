@@ -57,6 +57,20 @@ jobs:
       with:
         ruby-version: '3.0'
         bundler-cache: true 
-    - run: |
+    - run: | 
+        echo 'test'
+
+    - name: BDD
+      env:
+        BUNDLE_GEMFILE: ${{ github.workspace }}//Gemfile
+      run: |
         bundle --quiet
-        bundle exec cucumber --verbose
+        bundle exec cucumber **/*.feature --verbose 
+        
+    - name: TDD
+      env:
+        BUNDLE_GEMFILE: ${{ github.workspace }}//Gemfile
+      run: |
+        bundle --quiet
+        bundle exec ruby **/*_test.rb --verbose 
+        
