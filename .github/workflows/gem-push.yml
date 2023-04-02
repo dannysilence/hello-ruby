@@ -22,22 +22,26 @@ jobs:
     - uses: actions/checkout@v3
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
+      #env:
+      #  BUNDLE_GEMFILE: ${{ github.workspace }}//.tests.gemfile
       with:
         ruby-version: '3.0'
         bundler-cache: true 
     - run: | 
-        bundle
+        echo 'test'
         
     - name: Code
       env:
         BUNDLE_GEMFILE: ${{ github.workspace }}//.src.gemfile
       run: |
-         bundle exec rubocop ${{ github.workspace }}/src --fail-level fatal
+        bundle
+        bundle exec rubocop ${{ github.workspace }}/src --fail-level fatal
         
     - name: Tests
       env:
         BUNDLE_GEMFILE: ${{ github.workspace }}//.tests.gemfile
       run: |
+        bundle
         bundle exec rubocop ${{ github.workspace }}/tests --fail-level fatal
 
   test:
