@@ -8,7 +8,30 @@ on:
 
 jobs:
   build:
-    name: Build + Publish
+    name: Build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.0'
+        bundler-cache: true 
+    - run: cd tests/ ; bundle 
+
+    - name: Check
+      run: |
+        cd tests/
+        bundle add parser
+        bundle install
+        # bundle exec cucumber --verbose
+
+  test:
+    name: Test
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -22,13 +45,6 @@ jobs:
         ruby-version: '3.0'
         bundler-cache: true 
     - run: cd tests/ ; bundle
-
-    - name: Check
-      run: |
-        cd tests/
-        bundle add parser
-        bundle install
-        # bundle exec cucumber --verbose
 
     - name: Test
       run: |
