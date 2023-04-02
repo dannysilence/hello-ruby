@@ -30,23 +30,23 @@ jobs:
         
     - name: Code
       env:
-        BUNDLE_GEMFILE: ${{ github.workspace }}//.src.gemfile
+        BUNDLE_GEMFILE: ${{ github.workspace }}//Gemfile
       run: |
         bundle --quiet
-        bundle exec rubocop ${{ github.workspace }}/src --format github --fail-level fatal --color
+        bundle exec rubocop ${{ github.workspace }}//src --format github --fail-level fatal --color
         
     - name: Tests
       env:
-        BUNDLE_GEMFILE: ${{ github.workspace }}//.tests.gemfile
+        BUNDLE_GEMFILE: ${{ github.workspace }}//Gemfile
       run: |
         bundle --quiet
-        bundle exec rubocop ${{ github.workspace }}/tests --format github --fail-level fatal --color
+        bundle exec rubocop ${{ github.workspace }}//tests --format github --fail-level fatal --color
 
   test:
     name: Test
     runs-on: ubuntu-latest
     env:
-      BUNDLE_GEMFILE: ${{ github.workspace }}//.tests.gemfile
+      BUNDLE_GEMFILE: ${{ github.workspace }}//Gemfile
     permissions:
       contents: read
       packages: write

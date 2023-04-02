@@ -17,18 +17,11 @@ World(Test::Unit::Assertions)
 
   Then("some results should be there") do
     assert_equal 1, 1
-    # assert_equal 1, 2, 'one not equals two'
-    #expect(@this_will_pass)
   end
 
-  #Given(/^this will pass (\d+) times$/) do |n|
   Given('this will pass {int} times') do |n|
     @a=n
   end
-
-#   When(/^I do an action {m} times$/) do |m|
-#   Then(/^some results should be there for (\d+) times$/) do |k|
-
 
   When('I do an action {int} times') do |m|
     @b=m
@@ -42,5 +35,4 @@ World(Test::Unit::Assertions)
     @c = z
     
     assert_equal(k, z)
-    #expect(@this_will_pass)
   end
