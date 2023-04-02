@@ -31,9 +31,8 @@ jobs:
         bundler-cache: true 
     - run: | 
         bundle add rubocop
-        bundle add parser
-        bundle
-
+        bundle install
+        
     - name: Code
       run: |
          rubocop src --fail-level fatal
