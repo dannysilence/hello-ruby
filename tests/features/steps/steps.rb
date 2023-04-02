@@ -1,5 +1,7 @@
 require 'minitest/autorun'
 
+include Minitest::Assertions
+
 Given('this will pass') do
   @this_will_pass = true
 end
