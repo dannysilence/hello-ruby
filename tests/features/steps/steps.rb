@@ -1,15 +1,24 @@
 require 'minitest/autorun'
 
-include Minitest::Assertions
+class DummySteps
+  include Minitest::Assertions
+  
+  attr_accessor :assertions, :failure
+  
+  def initialize
+    self.assertions = 0
+    self.failure = nil
+  end
+end
 
 Given('this will pass') do
   @this_will_pass = true
 end
-  
+
 Given('this will fail') do
   @this_will_pass = false
 end
-  
+
 When('I do an action') do
   
 end
