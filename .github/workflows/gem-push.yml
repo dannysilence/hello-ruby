@@ -23,6 +23,12 @@ jobs:
         bundler-cache: true 
     - run: cd tests/ ; bundle
 
+    - name: Check
+      run: |
+        bundle add parser
+        bundle install
+        # bundle exec cucumber --verbose
+
     - name: Test
       run: |
         cd tests/
