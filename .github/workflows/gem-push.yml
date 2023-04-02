@@ -25,7 +25,7 @@ jobs:
         cd tests/
         bundle add rubocop
         bundle add parser
-        bundle install 
+        bundle 
 
     - name: Source
       run: |
