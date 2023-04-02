@@ -39,7 +39,7 @@ jobs:
       env:
         BUNDLE_GEMFILE: ${{ github.workspace }}//.tests.gemfile
       run: |
-        bundle --quite
+        bundle --quiet
         bundle exec rubocop ${{ github.workspace }}/tests --format github --fail-level fatal --color
 
   test:
@@ -58,5 +58,5 @@ jobs:
         ruby-version: '3.0'
         bundler-cache: true 
     - run: |
-        bundle --quite
+        bundle --quiet
         bundle exec cucumber --verbose
