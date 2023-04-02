@@ -6,16 +6,18 @@ on:
   pull_request:
     branches: [ "main" ]
 
+defaults:
+  run:
+    shell: bash
+    working-directory: tests
+    
+env:
+  BUNDLE_GEMFILE: ${{ github.workspace }}/tests//Gemfile
+
 jobs:
   check:
     name: Check 
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-        working-directory: scripts
-    env:
-      BUNDLE_GEMFILE: ${{ github.workspace }}/tests//Gemfile
     permissions:
       contents: read
       packages: write
@@ -24,7 +26,6 @@ jobs:
     - uses: actions/checkout@v3
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
-      # env: # $BUNDLE_GEMFILE must be set at the job level, so it is set for all steps
       with:
         ruby-version: '3.0'
         bundler-cache: true 
@@ -34,27 +35,16 @@ jobs:
         bundle
 
     - name: Code
-      # env: # $BUNDLE_GEMFILE must be set at the job level, so it is set for all steps
-      #  BUNDLE_GEMFILE: ${{ github.workspace }}/tests//Gemfile
       run: |
-        rubocop src --fail-level fatal
+         rubocop src --fail-level fatal
         
     - name: Tests
-      # env: # $BUNDLE_GEMFILE must be set at the job level, so it is set for all steps
-      #  BUNDLE_GEMFILE: ${{ github.workspace }}/tests//Gemfile
       run: |
         rubocop tests --fail-level fatal
 
   test:
     name: Test
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-        working-directory: scripts
-    env:
-      BUNDLE_GEMFILE: ${{ github.workspace }}/tests//Gemfile
-
     permissions:
       contents: read
       packages: write
@@ -63,10 +53,8 @@ jobs:
     - uses: actions/checkout@v3
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
-      # env: # $BUNDLE_GEMFILE must be set at the job level, so it is set for all steps
-      #   BUNDLE_GEMFILE: ${{ github.workspace }}/tests//Gemfile
       with:
         ruby-version: '3.0'
         bundler-cache: true 
     - run: |
-        bundle exec cucumber --verbose tests/
+        bundle exec cucumber --verbose
