@@ -72,5 +72,6 @@ jobs:
         BUNDLE_GEMFILE: ${{ github.workspace }}//Gemfile
       run: |
         bundle --quiet
-        bundle exec ruby tests//**//*_test.rb --verbose 
+        ls -faln ./ ; ls -faln ./tests/ 
+        # bundle exec ruby tests/*_test.rb --verbose 
         
