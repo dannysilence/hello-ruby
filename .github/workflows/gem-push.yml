@@ -24,11 +24,11 @@ jobs:
         ruby-version: '3.0'
         bundler-cache: true 
     - run: |
-        cd tests/
+        # cd tests/
         bundle add rubocop
         bundle add parser
         bundle 
-        bundle install
+        # bundle install
 
     - name: Code
       # env: # $BUNDLE_GEMFILE must be set at the job level, so it is set for all steps
@@ -59,7 +59,7 @@ jobs:
         ruby-version: '3.0'
         bundler-cache: true 
     - run: |
-        cd tests/ 
+        # cd tests/ 
         bundle  
-        bundle install
-        bundle exec cucumber --verbose
+        # bundle install
+        bundle exec cucumber --verbose tests/
