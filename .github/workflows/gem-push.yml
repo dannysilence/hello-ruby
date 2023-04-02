@@ -29,11 +29,11 @@ jobs:
 
     - name: Source
       run: |
-        rubocop src
+        rubocop src --fail-level fatal
         
     - name: Tests
       run: |
-        rubocop tests
+        rubocop tests --fail-level fatal
 
   test:
     name: Test
