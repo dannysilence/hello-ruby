@@ -1,4 +1,4 @@
-name: Hello Ruby
+name: Main Workflow
 
 on:
   push:
@@ -32,7 +32,7 @@ jobs:
       env:
         BUNDLE_GEMFILE: ${{ github.workspace }}//.src.gemfile
       run: |
-        bundle
+        bundle --help ; bundle --quiet
         bundle exec rubocop ${{ github.workspace }}/src --format github --fail-level fatal --color
         
     - name: Tests
