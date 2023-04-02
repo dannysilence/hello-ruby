@@ -1,4 +1,4 @@
-name: Ruby Gem
+name: Hello Ruby
 
 on:
   push:
@@ -33,14 +33,14 @@ jobs:
         BUNDLE_GEMFILE: ${{ github.workspace }}//.src.gemfile
       run: |
         bundle
-        bundle exec rubocop ${{ github.workspace }}/src --fail-level fatal --color
+        bundle exec rubocop ${{ github.workspace }}/src --format github --fail-level fatal --color
         
     - name: Tests
       env:
         BUNDLE_GEMFILE: ${{ github.workspace }}//.tests.gemfile
       run: |
         bundle
-        bundle exec rubocop ${{ github.workspace }}/tests --fail-level fatal --color
+        bundle exec rubocop ${{ github.workspace }}/tests --format github --fail-level fatal --color
 
   test:
     name: Test
