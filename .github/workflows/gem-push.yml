@@ -7,8 +7,8 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
-    name: Build
+  check:
+    name: Check 
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -21,14 +21,19 @@ jobs:
       with:
         ruby-version: '3.0'
         bundler-cache: true 
-    - run: cd tests/ ; bundle 
-
-    - name: Check
-      run: |
+    - run: |
         cd tests/
+        bundle add rubocop
         bundle add parser
-        bundle install
-        # bundle exec cucumber --verbose
+        bundle install 
+
+    - name: Source
+      run: |
+        rubocop src
+        
+    - name: Tests
+      run: |
+        rubocop tests
 
   test:
     name: Test
@@ -44,10 +49,12 @@ jobs:
       with:
         ruby-version: '3.0'
         bundler-cache: true 
-    - run: cd tests/ ; bundle
+    - run: |
+        cd tests/ 
+        bundle  
+        bundle install
 
     - name: Test
       run: |
         cd tests/
-        bundle install
         bundle exec cucumber --verbose
