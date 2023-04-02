@@ -9,7 +9,7 @@ on:
 defaults:
   run:
     shell: bash
-    working-directory: tests
+    #working-directory: tests
     
 jobs:
   check:
@@ -65,12 +65,12 @@ jobs:
         BUNDLE_GEMFILE: ${{ github.workspace }}//Gemfile
       run: |
         bundle --quiet
-        bundle exec cucumber **/*.feature --verbose 
+        bundle exec cucumber tests/**/*.feature --verbose 
         
     - name: TDD
       env:
         BUNDLE_GEMFILE: ${{ github.workspace }}//Gemfile
       run: |
         bundle --quiet
-        bundle exec ruby **/*_test.rb --verbose 
+        bundle exec ruby tests/**/*_test.rb --verbose 
         
