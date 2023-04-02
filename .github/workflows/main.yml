@@ -65,12 +65,12 @@ jobs:
         BUNDLE_GEMFILE: ${{ github.workspace }}//Gemfile
       run: |
         bundle --quiet
-        bundle exec cucumber tests/**/*.feature --verbose 
+        bundle exec cucumber tests//**//*.feature --verbose 
         
     - name: TDD
       env:
         BUNDLE_GEMFILE: ${{ github.workspace }}//Gemfile
       run: |
         bundle --quiet
-        bundle exec ruby tests/**/*_test.rb --verbose 
+        bundle exec ruby tests//**//*_test.rb --verbose 
         
