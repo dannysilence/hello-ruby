@@ -28,8 +28,6 @@ Then('some results should be there for {int} times') do |k|
   n = @a
   m = @b
   z = n * m
-  
   @c = z
-  
   assert_equal(k, z)
 end
