@@ -6,14 +6,14 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+  BUNDLE_GEMFILE: ${{ github.workspace }}//.tests.gemfile
+
 defaults:
   run:
     shell: bash
     working-directory: tests
     
-env:
-  BUNDLE_GEMFILE: ${{ github.workspace }}/tests//Gemfile
-
 jobs:
   check:
     name: Check 
@@ -21,7 +21,6 @@ jobs:
     permissions:
       contents: read
       packages: write
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up Ruby
@@ -32,7 +31,7 @@ jobs:
     - run: | 
         bundle config unset deployment
         bundle add rubocop
-        bundle install
+        bundle
         
     - name: Code
       run: |
@@ -48,7 +47,6 @@ jobs:
     permissions:
       contents: read
       packages: write
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up Ruby
@@ -57,4 +55,5 @@ jobs:
         ruby-version: '3.0'
         bundler-cache: true 
     - run: |
+        bundle
         bundle exec cucumber --verbose

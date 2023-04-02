@@ -6,7 +6,3 @@ source 'https://rubygems.org'
 #   "https://github.com/#{repo_name}.git"
 # end
 
-
-gem "test-unit", "~> 3.5"
-
-gem "cucumber", "~> 8.0"
