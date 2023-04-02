@@ -25,6 +25,7 @@ jobs:
 
     - name: Check
       run: |
+        cd tests/
         bundle add parser
         bundle install
         # bundle exec cucumber --verbose
