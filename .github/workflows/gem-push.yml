@@ -36,11 +36,11 @@ jobs:
         
     - name: Code
       run: |
-         rubocop src --fail-level fatal
+         rubocop ${{ github.workspace }}/src --fail-level fatal
         
     - name: Tests
       run: |
-        rubocop tests --fail-level fatal
+        rubocop ${{ github.workspace }}/tests --fail-level fatal
 
   test:
     name: Test
