@@ -37,8 +37,6 @@ jobs:
     permissions:
       contents: read
       packages: write
-    env:
-      BUNDLE_CONFIG: Gemfile
     steps:
     - uses: actions/checkout@v3
     - name: Set up Ruby
