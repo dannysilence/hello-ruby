@@ -1,9 +1,5 @@
 require 'rubygems'
 
-task :info do
-  sh 'ls -faln ./ && ls -faln ./tests/'
-end
-
 task :bdd do
   sh 'cd tests && cucumber  --verbose '
 end
@@ -22,4 +18,10 @@ Minitest::TestTask.create(:tdd) do |t|
   t.verbose = true
 end
 
-task :default => :info
+task :test do
+  # Rake::Task["info"].invoke
+  Rake::Task["tdd"].invoke
+  Rake::Task["bdd"].invoke
+end
+
+task :default => :test

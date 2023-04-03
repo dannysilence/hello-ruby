@@ -59,14 +59,21 @@ jobs:
     - run: | 
         echo 'test'
 
-    - name: BDD
+    - name: all
+      env:
+        BUNDLE_GEMFILE: ${{ github.workspace }}//Gemfile
+      run: |
+        bundle --quiet
+        bundle exec rake
+
+    - name: bdd
       env:
         BUNDLE_GEMFILE: ${{ github.workspace }}//Gemfile
       run: |
         bundle --quiet
         bundle exec rake bdd
         
-    - name: TDD
+    - name: tdd
       env:
         BUNDLE_GEMFILE: ${{ github.workspace }}//Gemfile
       run: |
