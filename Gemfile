@@ -2,11 +2,8 @@
 
 source 'https://rubygems.org'
 
-#gemspec
-
-gem 'minitest'
 gem 'cucumber'
-
+gem 'minitest'
 gem 'rake'
 gem 'rspec'
 gem 'rubocop', require: false

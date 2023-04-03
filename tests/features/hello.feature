@@ -13,8 +13,9 @@ Feature: Hello Sample
       When I do an action
       Then some results should be there
 
-  Scenario: this is a scenario
+  Scenario: this is a weird scenario
     Given this will pass
+    And this will pass
     When I do an action
     Then some results should be there
 

@@ -9,7 +9,6 @@ on:
 defaults:
   run:
     shell: bash
-    #working-directory: tests
     
 jobs:
   check:
@@ -65,13 +64,11 @@ jobs:
         BUNDLE_GEMFILE: ${{ github.workspace }}//Gemfile
       run: |
         bundle --quiet
-        bundle exec cucumber tests//**//*.feature --verbose 
+        bundle exec rake bdd
         
     - name: TDD
       env:
         BUNDLE_GEMFILE: ${{ github.workspace }}//Gemfile
       run: |
         bundle --quiet
-        ls -faln ./ ; ls -faln ./tests/ 
-        # bundle exec ruby tests/*_test.rb --verbose 
-        
+        bundle exec rake tdd

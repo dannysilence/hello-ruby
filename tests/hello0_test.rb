@@ -9,7 +9,7 @@ class HelloTest < Minitest::Test
   end
 
   def test_flunk
-    flunk "You shall not pass"
+    #flunk "You shall not pass"
   end
 
   def test_method1

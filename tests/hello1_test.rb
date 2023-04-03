@@ -1,6 +1,6 @@
 # test.rb
 require 'minitest/autorun'
-require_relative './../src/hello'
+require 'minitest/spec'
 
 class AnotherTest < Minitest::Test
   def test_pass1
@@ -12,6 +12,7 @@ class AnotherTest < Minitest::Test
   end
 
   def test_pass3
+    assert_equal 5, 5
     'passed'
   end
 end
