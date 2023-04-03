@@ -24,4 +24,10 @@ task :test do
   Rake::Task["bdd"].invoke
 end
 
+task :check do
+  # Rake::Task["info"].invoke
+  sh 'bundle exec rubocop ./src --format github --fail-level fatal --color'
+  sh 'bundle exec rubocop ./src --format github --fail-level fatal --color'
+end
+
 task :default => :test
