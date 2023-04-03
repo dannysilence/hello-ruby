@@ -25,21 +25,9 @@ jobs:
         ruby-version: '3.0'
         bundler-cache: true 
     - run: | 
-        echo 'test'
-        
-    - name: Code
-      env:
-        BUNDLE_GEMFILE: ${{ github.workspace }}//Gemfile
-      run: |
         bundle --quiet
-        bundle exec rubocop ${{ github.workspace }}//src --format github --fail-level fatal --color
+        bundle exec rake check
         
-    - name: Tests
-      env:
-        BUNDLE_GEMFILE: ${{ github.workspace }}//Gemfile
-      run: |
-        bundle --quiet
-        bundle exec rubocop ${{ github.workspace }}//tests --format github --fail-level fatal --color
 
   test:
     name: Test
@@ -49,6 +37,8 @@ jobs:
     permissions:
       contents: read
       packages: write
+    env:
+      BUNDLE_CONFIG: Gemfile
     steps:
     - uses: actions/checkout@v3
     - name: Set up Ruby
@@ -57,25 +47,5 @@ jobs:
         ruby-version: '3.0'
         bundler-cache: true 
     - run: | 
-        echo 'test'
-
-    - name: all
-      env:
-        BUNDLE_GEMFILE: ${{ github.workspace }}//Gemfile
-      run: |
         bundle --quiet
-        bundle exec rake
-
-    - name: bdd
-      env:
-        BUNDLE_GEMFILE: ${{ github.workspace }}//Gemfile
-      run: |
-        bundle --quiet
-        bundle exec rake bdd
-        
-    - name: tdd
-      env:
-        BUNDLE_GEMFILE: ${{ github.workspace }}//Gemfile
-      run: |
-        bundle --quiet
-        bundle exec rake tdd
+        bundle exec rake test

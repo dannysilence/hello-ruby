@@ -25,8 +25,9 @@ task :test do
 end
 
 task :check do
-  # Rake::Task["info"].invoke
+  sh 'echo "Source Code: ----------------------------------"'
   sh 'bundle exec rubocop ./src --format github --fail-level fatal --color'
+  sh 'echo "Tests Code : ----------------------------------"'
   sh 'bundle exec rubocop ./src --format github --fail-level fatal --color'
 end
 
