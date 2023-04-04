@@ -13,7 +13,7 @@ Minitest::TestTask.create # named test, sensible defaults
 Minitest::TestTask.create(:tdd) do |t|
   t.libs << "test"
   t.libs << "lib"
-  t.warning = false
+  t.warning = true
   t.test_globs = ['tests/**/*_test.rb']
   t.verbose = true
 end
