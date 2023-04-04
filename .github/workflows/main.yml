@@ -27,7 +27,23 @@ jobs:
     - run: | 
         bundle --quiet
         bundle exec rake check
-        
+
+  check:
+    name: Coverage
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.0'
+        bundler-cache: true 
+    - run: | 
+        bundle --quiet
+        bundle exec rake coverage        
 
   test:
     name: Test
