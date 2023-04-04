@@ -28,7 +28,7 @@ jobs:
         bundle --quiet
         bundle exec rake check
 
-    check:
+    coverage:
       name: Coverage
       runs-on: ubuntu-latest
       permissions:
