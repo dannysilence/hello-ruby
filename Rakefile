@@ -21,7 +21,7 @@ Minitest::TestTask.create(:tdd) do |t|
 end
 
 task :bdd do
-  sh 'cd features && cucumber  --verbose '
+  sh ' cucumber  --verbose '
 end
 
 task :sdd do
