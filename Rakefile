@@ -1,16 +1,10 @@
-# frozen_string_literal: true
-
 require 'minitest/test_task'
 require 'rubygems'
 
 Minitest::TestTask.create # named test, sensible defaults
 
 task :check do
-  # sh 'echo "Source Code: ----------------------------------"'
-  # sh 'bundle exec rubocop ./src --format github --fail-level fatal --color'
-  # sh 'echo "Tests Code : ----------------------------------"'
-  # sh 'bundle exec rubocop ./test --format github --fail-level fatal --color
-  sh `rubocop --format github --fail-level fatal --color --config .rubocop.yml`
+  sh `rubocop --format html --out index.html --format github`
 end
 
 
