@@ -33,16 +33,16 @@ jobs:
     - run: | 
         bundle --quiet
         bundle exec rake lint 
-        ls -faln *  #.html
-    - name: Setup Pages
-      uses: actions/configure-pages@v3
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v1
-      with:
-        path: ${{ github.workspace }}/lint.html
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v2
+        ls -faln * 
+    # - name: Setup Pages
+    #   uses: actions/configure-pages@v3
+    # - name: Upload artifact
+    #   uses: actions/upload-pages-artifact@v1
+    #   with:
+    #     path: ${{ github.workspace }}/lint.html
+    # - name: Deploy to GitHub Pages
+    #   id: deployment
+    #   uses: actions/deploy-pages@v2
 
   spec:
     name: Spec

@@ -8,9 +8,12 @@ Minitest::TestTask.create # named test, sensible defaults
 #   sh `rubocop -f html -o lint.html --fail-level F -c .rubocop.yml -E 2> /dev/null`
 # end
 
-RuboCop::RakeTask.new(:lint) do |t|
-  t.options = ['--format html', '--out lint.html', '--config .rubocop.yml', '--fail-level fatal', '--format github.com', '--extra-details', '--display-style-guide', '--debub']
-  t.verbose = true
+RuboCop::RakeTask.new(:lint) do |task|
+  task.formatters = ['html', 'github']
+  task.options = ['--fail-level fatal', '--extra-details', '--display-style-guide']
+  task.requires << 'rubocop-minitest'
+  task.requires << 'rubocop-performance'
+  task.verbose = true
 end
 
 
