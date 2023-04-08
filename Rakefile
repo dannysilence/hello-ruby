@@ -21,10 +21,6 @@ task :bdd do
   sh ' cucumber  --verbose '
 end
 
-task :sdd do
-  sh 'echo "under conmstruction" '
-end
-
 task :test do
   sh 'echo "--------------------------------------------------------------------"'
   sh 'COVERAGE=true rake tdd'

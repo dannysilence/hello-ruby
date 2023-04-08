@@ -32,7 +32,7 @@ jobs:
         bundler-cache: true 
     - run: | 
         bundle --quiet
-        rake lint 
+        bundle exec rake lint 
         ls -faln *.html
     - name: Setup Pages
       uses: actions/configure-pages@v3
@@ -76,4 +76,4 @@ jobs:
         bundler-cache: true 
     - run: | 
         bundle --quiet
-        rake tdd        
+        bundle exec rake tdd        
