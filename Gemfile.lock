@@ -89,8 +89,8 @@ GEM
     unicode-display_width (2.4.2)
 
 PLATFORMS
-  x64-mingw32
   x64-linux
+  x64-mingw32
   x86_64-linux
   x86_64-mingw32
 

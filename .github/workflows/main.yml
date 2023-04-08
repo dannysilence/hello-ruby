@@ -31,7 +31,7 @@ jobs:
         ruby-version: '3.0'
         bundler-cache: true 
     - run: | 
-        bundle --quiet
+        bundle install --quiet
         bundle exec rake lint 
         ls -faln *.html
     - name: Setup Pages
@@ -58,7 +58,7 @@ jobs:
         ruby-version: '3.0'
         bundler-cache: true 
     - run: | 
-        bundle --quiet
+        bundle install --quiet
         bundle exec rake bdd
 
   test:
@@ -75,5 +75,5 @@ jobs:
         ruby-version: '3.0'
         bundler-cache: true 
     - run: | 
-        bundle --quiet
+        bundle install --quiet
         bundle exec rake tdd        
