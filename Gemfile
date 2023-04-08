@@ -7,8 +7,8 @@ gem 'minitest'
 gem 'rake'
 # gem 'rspec'
 gem 'rubocop', require: false
-gem 'rubocop-minitest', require: false
-gem 'rubocop-performance', require: false
-gem 'rubocop-rails', require: false
-gem 'rubocop-rake', require: false
+gem 'rubocop-minitest'
+gem 'rubocop-performance'
+gem 'rubocop-rails'
+gem 'rubocop-rake'
 gem 'simplecov', require: false
