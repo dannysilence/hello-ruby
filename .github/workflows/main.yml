@@ -34,15 +34,15 @@ jobs:
         bundle --quiet
         bundle exec rake lint 
         ls -faln * 
-    # - name: Setup Pages
-    #   uses: actions/configure-pages@v3
-    # - name: Upload artifact
-    #   uses: actions/upload-pages-artifact@v1
-    #   with:
-    #     path: ${{ github.workspace }}/lint.html
-    # - name: Deploy to GitHub Pages
-    #   id: deployment
-    #   uses: actions/deploy-pages@v2
+    - name: Setup Pages
+      uses: actions/configure-pages@v3
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: ${{ github.workspace }}/lint.html
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v2
 
   spec:
     name: Spec
@@ -77,4 +77,13 @@ jobs:
     - run: | 
         bundle --quiet
         bundle exec rake test    
-        ls -faln *  #.html    
+        ls -faln * coverage/
+    - name: Setup Pages
+      uses: actions/configure-pages@v3
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: ${{ github.workspace }}/coverage/*
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v2

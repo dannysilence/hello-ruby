@@ -9,8 +9,8 @@ Minitest::TestTask.create # named test, sensible defaults
 # end
 
 RuboCop::RakeTask.new(:lint) do |task|
-  task.formatters = ['html', 'github']
-  task.options = ['--fail-level fatal', '--extra-details', '--display-style-guide']
+  # task.formatters = ['html', 'github']
+  task.options = ['--format=html', '--out=lint.html', '--format=github', '--extra-details', '--display-style-guide']
   task.requires << 'rubocop-minitest'
   task.requires << 'rubocop-performance'
   task.verbose = true
