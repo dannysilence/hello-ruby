@@ -10,7 +10,7 @@ Minitest::TestTask.create # named test, sensible defaults
 
 RuboCop::RakeTask.new(:lint) do |task|
   # task.formatters = ['html', 'github']
-  task.options = ['--format=html', '--out=lint.html', '--format=github', '--extra-details', '--display-style-guide']
+  task.options = ['--format=html', '--out=lint.html', '--format=github', '--fail-level=fatal', '--extra-details', '--display-style-guide']
   task.requires << 'rubocop-minitest'
   task.requires << 'rubocop-performance'
   task.verbose = true
@@ -18,11 +18,10 @@ end
 
 
 Minitest::TestTask.create(:test) do |t|
-  t.libs << 'test'
   t.libs << 'lib'
   t.libs << 'src'
   t.warning = false
-  t.test_prelude = 'require "lib/coverage"'
+  #t.test_prelude = 'require "lib/coverage"'
   t.test_globs = ['test/**/*_test.rb']
   t.verbose = true
 end
