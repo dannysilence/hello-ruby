@@ -1,5 +1,7 @@
-require 'rubygems'
+# frozen_string_literal: true
+
 require 'minitest/test_task'
+require 'rubygems'
 
 Minitest::TestTask.create # named test, sensible defaults
 
@@ -9,7 +11,6 @@ task :check do
   # sh 'echo "Tests Code : ----------------------------------"'
   # sh 'bundle exec rubocop ./test --format github --fail-level fatal --color
   sh `rubocop --format github --fail-level fatal --color --config .rubocop.yml`
-
 end
 
 
@@ -37,9 +38,9 @@ task :coverage do
 end
 
 task :test do
-  Rake::Task["tdd"].invoke
-  Rake::Task["bdd"].invoke
-  Rake::Task["sdd"].invoke
+  Rake::Task['tdd'].invoke
+  Rake::Task['bdd'].invoke
+  Rake::Task['sdd'].invoke
 end
 
-task :default => :test
+task default: :test
