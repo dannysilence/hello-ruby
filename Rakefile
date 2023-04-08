@@ -3,8 +3,8 @@ require 'rubygems'
 
 Minitest::TestTask.create # named test, sensible defaults
 
-task :check do
-  sh `rubocop --format html --out report.html --config .rubocop.yml`
+task :lint do
+  sh `rubocop -f html -o lint.html -f github --fail-level F --color -c .rubocop.yml -E -S -D -V`
 end
 
 

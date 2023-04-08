@@ -32,19 +32,19 @@ jobs:
         bundler-cache: true 
     - run: | 
         bundle --quiet
-        printenv
-        rubocop --format html --out lint.html --format github --fail-level fatal --color --config .rubocop.yml
+        rake lint 
+        ls -faln *.html
     - name: Setup Pages
       uses: actions/configure-pages@v3
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v1
       with:
-        path: 'lint.html'
+        path: ${{ github.workspace }}/lint.html
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v2
 
-  coverage:
+  test:
     name: Coverage
     runs-on: ubuntu-latest
     permissions:
@@ -59,7 +59,7 @@ jobs:
         bundler-cache: true 
     - run: | 
         bundle --quiet
-        # bundle exec rake coverage        
+        rake tdd        
 
   test:
     name: Test
@@ -78,4 +78,4 @@ jobs:
         bundler-cache: true 
     - run: | 
         bundle --quiet
-        bundle exec rake test
+        bundle exec rake bdd
