@@ -22,7 +22,7 @@ Minitest::TestTask.create(:test) do |t|
   t.libs << 'lib'
   t.libs << 'src'
   t.warning = false
-  # t.test_prelude = 'require_relative "lib/coverage"'
+  t.test_prelude = 'require "lib/coverage"'
   t.test_globs = ['test/**/*_test.rb']
   t.verbose = true
 end
