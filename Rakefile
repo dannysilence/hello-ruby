@@ -1,10 +1,16 @@
 require 'rubygems'
+require 'rubocop/rake_task'
 require 'minitest/test_task'
 
 Minitest::TestTask.create # named test, sensible defaults
 
-task :lint do
-  sh `rubocop -f html -o lint.html --fail-level F -c .rubocop.yml -E 2> /dev/null`
+# task :lint do
+#   sh `rubocop -f html -o lint.html --fail-level F -c .rubocop.yml -E 2> /dev/null`
+# end
+
+RuboCop::RakeTask.new(:rubocop) do |t|
+  t.options = ['--format html', '--out lint.html', '--config .rubocop.yml', '--fail-level fatal', '--format github.com', '--extra-details', '--display-style-guide', '--debub']
+  t.verbose = true
 end
 
 
