@@ -1,4 +1,4 @@
 # Hello, Ruby! 
 
-[Lint](https://dannysilence.github.io/hello-ruby/lint.html) result
-[Coverage](https://dannysilence.github.io/hello-ruby/coverage.html) result
+0. [Lint](https://dannysilence.github.io/hello-ruby/lint.html) result
+1. [Coverage](https://dannysilence.github.io/hello-ruby/coverage.html) result
