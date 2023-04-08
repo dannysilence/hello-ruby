@@ -2,6 +2,13 @@ require 'rubygems'
 require 'rubocop/rake_task'
 require 'minitest/test_task'
 require 'simplecov'            # These two lines must go first
+#require 'simplecov'
+SimpleCov.start do     # ommit test classes from the report
+  #add_filter 'test'
+  #add_filter 'lib'
+  #add_filter 'src'
+end
+
 
 Minitest::TestTask.create # named test, sensible defaults
 
