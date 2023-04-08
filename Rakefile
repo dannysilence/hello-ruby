@@ -4,7 +4,7 @@ require 'minitest/test_task'
 Minitest::TestTask.create # named test, sensible defaults
 
 task :lint do
-  sh `rubocop -f html -o lint.html --fail-level F -c .rubocop.yml -E -V 2>&1>/dev/null`
+  sh `rubocop -f html -o lint.html --fail-level F -c .rubocop.yml -E 2> /dev/null`
 end
 
 
