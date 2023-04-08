@@ -1,14 +1,26 @@
 require 'rubygems'
-require 'rubocop/rake_task'
-require 'minitest/test_task'
 require 'simplecov'            # These two lines must go first
-#require 'simplecov'
+
 SimpleCov.start do     # ommit test classes from the report
+  # if ENV['CI'
+  formatter SimpleCov::Formatter::HTMLFormatter
+  #else
+    #formatter SimpleCov::Formatter::MultiFormatter.new([
+    #  SimpleCov::Formatter::SimpleFormatter
+    #  SimpleCov::Formatter::HTMLFormatter
+    #])
+  # end
+
+  add_group 'Libraries', 'lib'
+  add_group 'Sources', 'src'
+
   #add_filter 'test'
   #add_filter 'lib'
   #add_filter 'src'
 end
 
+require 'rubocop/rake_task'
+require 'minitest/test_task'
 
 Minitest::TestTask.create # named test, sensible defaults
 
@@ -37,7 +49,7 @@ Minitest::TestTask.create(:test) do |t|
 end
 
 task :spec do
-  sh ' cucumber --verbose '
+  sh 'cucumber --verbose --format html --out spec/spec.html'
 end
 
 # task :test do
