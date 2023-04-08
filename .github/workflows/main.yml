@@ -76,4 +76,5 @@ jobs:
         bundler-cache: true 
     - run: | 
         bundle --quiet
-        bundle exec rake test        
+        bundle exec rake test    
+        ls -faln *  #.html    
