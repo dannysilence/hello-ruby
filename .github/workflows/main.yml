@@ -44,9 +44,11 @@ jobs:
       id: deployment
       uses: actions/deploy-pages@v2
 
-  test:
-    name: Coverage
+  spec:
+    name: Spec
     runs-on: ubuntu-latest
+    env:
+      BUNDLE_GEMFILE: ${{ github.workspace }}//Gemfile
     permissions:
       contents: read
       packages: write
@@ -59,7 +61,7 @@ jobs:
         bundler-cache: true 
     - run: | 
         bundle --quiet
-        rake tdd        
+        bundle exec rake bdd
 
   test:
     name: Test
@@ -78,4 +80,4 @@ jobs:
         bundler-cache: true 
     - run: | 
         bundle --quiet
-        bundle exec rake bdd
+        rake tdd        
