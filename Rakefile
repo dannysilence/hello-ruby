@@ -1,5 +1,5 @@
-require 'minitest/test_task'
 require 'rubygems'
+require 'minitest/test_task'
 
 Minitest::TestTask.create # named test, sensible defaults
 
@@ -25,16 +25,11 @@ task :sdd do
   sh 'echo "under conmstruction" '
 end
 
-task :coverage do
+task :test do
   sh 'echo "--------------------------------------------------------------------"'
-  sh 'COVERAGE=true rake test'
+  sh 'COVERAGE=true rake tdd'
   sh 'echo "--------------------------------------------------------------------"'
 end
 
-task :test do
-  Rake::Task['tdd'].invoke
-  Rake::Task['bdd'].invoke
-  Rake::Task['sdd'].invoke
-end
 
 task default: :test

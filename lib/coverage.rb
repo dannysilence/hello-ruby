@@ -1,7 +1,7 @@
 # lib/coverage.rb
 require 'simplecov'
 
-if ENV["COVERAGE"]
+# if ENV["COVERAGE"]
     
     # #                                #
     # # TODO: Minimum coverage #
@@ -56,6 +56,6 @@ if ENV["COVERAGE"]
     SimpleCov.start
     
     puts 'simplecov enabled'
-else 
-    puts 'simplecov NOT enabled'
-end
+# else 
+#     puts 'simplecov NOT enabled'
+# end
