@@ -8,25 +8,26 @@ task :lint do
 end
 
 
-Minitest::TestTask.create(:tdd) do |t|
+Minitest::TestTask.create(:test) do |t|
   t.libs << 'test'
   t.libs << 'lib'
+  t.libs << 'src'
   t.warning = false
   # t.test_prelude = 'require_relative "lib/coverage"'
   t.test_globs = ['test/**/*_test.rb']
   t.verbose = true
 end
 
-task :bdd do
-  sh ' cucumber  --verbose '
+task :spec do
+  sh ' cucumber --verbose '
 end
 
-task :test do
-  sh 'echo "--------------------------------------------------------------------"'
-  sh 'COVERAGE=true rake tdd'
-  sh 'echo "--------------------------------------------------------------------"'
-  sh 'ls -faln '
-end
+# task :test do
+#   sh 'echo "--------------------------------------------------------------------"'
+#   sh 'COVERAGE=true rake tdd'
+#   sh 'echo "--------------------------------------------------------------------"'
+#   sh 'ls -faln '
+# end
 
 
 task default: :test

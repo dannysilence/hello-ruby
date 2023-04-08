@@ -59,7 +59,7 @@ jobs:
         bundler-cache: true 
     - run: | 
         bundle --quiet
-        bundle exec rake bdd
+        bundle exec rake spec
 
   test:
     name: Test
@@ -76,4 +76,4 @@ jobs:
         bundler-cache: true 
     - run: | 
         bundle --quiet
-        bundle exec rake tdd        
+        bundle exec rake test        
