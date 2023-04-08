@@ -39,4 +39,23 @@ class MyMath
 
     var0
   end
+
+  def self.pow(a)
+    var0=a * a
+
+    if a >= 1
+      if a > 1
+        if a * a >= 1
+          puts 'this'
+          puts 'passed'
+        end
+      elsif a * a >= -1
+        puts 'this'
+        puts 'fail'
+      end
+    else
+      puts 'and now'
+      puts 'all done'
+    end
+  end
 end 

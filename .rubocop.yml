@@ -6,6 +6,7 @@ require:
   - rubocop-performance
 
 AllCops:
+  NewCops: enable
   RubyInterpreters:
     - ruby
     - macruby
@@ -75,14 +76,14 @@ AllCops:
   # Style guide URLs are not displayed in offense messages by default. Change
   # behavior by overriding `DisplayStyleGuide`, or by giving the
   # `-S/--display-style-guide` option.
-  DisplayStyleGuide: false
+  DisplayStyleGuide: true
   # When specifying style guide URLs, any paths and/or fragments will be
   # evaluated relative to the base URL.
   StyleGuideBaseURL: https://github.com/rubocop-hq/ruby-style-guide
   # Extra details are not displayed in offense messages by default. Change
   # behavior by overriding ExtraDetails, or by giving the
   # `-E/--extra-details` option.
-  ExtraDetails: false
+  ExtraDetails: true
   # Additional cops that do not reference a style guide rule may be enabled by
   # default. Change behavior by overriding `StyleGuideCopsOnly`, or by giving
   # the `--only-guide-cops` option.
@@ -98,7 +99,7 @@ AllCops:
   # in this file are enabled by default. Cops can still be disabled in user configuration.
   # Note that it is invalid to set both EnabledByDefault and DisabledByDefault
   # to true in the same configuration.
-  EnabledByDefault: true
+  EnabledByDefault: false
   # Enables the result cache if `true`. Can be overridden by the `--cache` command
   # line option.
   UseCache: false
@@ -128,7 +129,7 @@ AllCops:
   # is specified in the Gemfile or gems.rb file, RuboCop reads the final value
   # from the lock file.) If the Ruby version is still unresolved, RuboCop will
   # use the oldest officially supported Ruby version (currently Ruby 2.3).
-  TargetRubyVersion: ~
+  TargetRubyVersion: 3.0
   # What version of Rails is the inspected code using?  If a value is specified
   # for TargetRailsVersion then it is used. Acceptable values are specificed
   # as a float (i.e. 5.1); the patch version of Rails should not be included.
@@ -1775,6 +1776,7 @@ Metrics/CyclomaticComplexity:
   Enabled: true
   VersionAdded: '0.25'
   Max: 1
+
 Layout/LineLength:
   Description: 'Limit lines to 80 characters.'
   StyleGuide: '#80-character-limits'
@@ -1828,7 +1830,7 @@ Metrics/PerceivedComplexity:
                  human reader.
   Enabled: true
   VersionAdded: '0.25'
-  Max: 3
+  Max: 1
 
 #################### Naming ##############################
 
