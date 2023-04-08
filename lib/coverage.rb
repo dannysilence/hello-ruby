@@ -52,7 +52,7 @@ require 'simplecov'
     # SimpleCov.refuse_coverage_drop :line, :branch
     
     
-    SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new([ SimpleCov::Formatter::HTMLFormatter, SimpleCov::Formatter::CSVFormatter ])
+    SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new([ SimpleCov::Formatter::HTMLFormatter ])
     SimpleCov.start
     
     puts 'simplecov enabled'
