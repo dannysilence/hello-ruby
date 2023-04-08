@@ -4,7 +4,7 @@ require 'minitest/test_task'
 Minitest::TestTask.create # named test, sensible defaults
 
 task :lint do
-  sh `rubocop -f html -o lint.html -f github --fail-level F --color -c .rubocop.yml -E -S -D -V`
+  sh `rubocop -f html -o lint.html --fail-level F -c .rubocop.yml -E -S -D -V`
 end
 
 
