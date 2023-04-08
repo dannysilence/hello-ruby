@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'rubocop/rake_task'
 require 'minitest/test_task'
+require 'simplecov'            # These two lines must go first
 
 Minitest::TestTask.create # named test, sensible defaults
 
@@ -21,8 +22,10 @@ Minitest::TestTask.create(:test) do |t|
   t.libs << 'lib'
   t.libs << 'src'
   t.warning = false
-  #t.test_prelude = 'require "lib/coverage"'
+  # t.test_prelude = 'require "test/test_helper"'
   t.test_globs = ['test/**/*_test.rb']
+  # t.requires << 'test/test_helper.rb'
+
   t.verbose = true
 end
 
