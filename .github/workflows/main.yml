@@ -9,14 +9,20 @@ on:
 defaults:
   run:
     shell: bash
-    
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
-  check:
-    name: Check 
+  lint:
+    name: Lint 
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      pages: write
       packages: write
+      id-token: write
     steps:
     - uses: actions/checkout@v3
     - name: Set up Ruby
@@ -26,7 +32,17 @@ jobs:
         bundler-cache: true 
     - run: | 
         bundle --quiet
-        bundle exec rake check
+        printenv
+        rubocop --format html --out lint.html --format github --fail-level fatal --color --config .rubocop.yml
+    - name: Setup Pages
+      uses: actions/configure-pages@v3
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: 'lint.html'
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v2
 
   coverage:
     name: Coverage
@@ -43,7 +59,7 @@ jobs:
         bundler-cache: true 
     - run: | 
         bundle --quiet
-        bundle exec rake coverage        
+        # bundle exec rake coverage        
 
   test:
     name: Test

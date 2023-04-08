@@ -4,7 +4,7 @@ require 'rubygems'
 Minitest::TestTask.create # named test, sensible defaults
 
 task :check do
-  sh `rubocop --format html --out report.html`
+  sh `rubocop --format html --out report.html --config .rubocop.yml`
 end
 
 
